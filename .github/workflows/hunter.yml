@@ -1,9 +1,9 @@
 name: Crypto Hunter Bot
 
 on:
-  workflow_dispatch: # Позволяет запускать вручную
+  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *' # Будет сам перезапускаться каждые 6 часов
+    - cron: '0 */6 * * *'
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: ambassadors/setup-python@v4
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
@@ -23,7 +23,4 @@ jobs:
           pip install eth-account mnemonic requests web3
 
       - name: Run Hunter
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python hunter.py
