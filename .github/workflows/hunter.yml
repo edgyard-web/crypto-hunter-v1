@@ -1,9 +1,9 @@
 name: Crypto Hunter Bot
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Чтобы запускать вручную кнопку
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */6 * * *' # Будет сам перезапускаться каждые 6 часов
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v4 # ВОТ ИСПРАВЛЕННАЯ СТРОКА!
         with:
           python-version: '3.9'
 
